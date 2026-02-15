@@ -1,0 +1,304 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f8fb;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    padding: 20px 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+header h1 {
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+nav ul {
+    text-align: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 18px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+nav ul li a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #ffd166;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url("hero.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 22px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.btn-hero {
+    background: linear-gradient(45deg, #ffd166, #ffb703);
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+    transition: 0.4s;
+}
+
+.btn-hero:hover {
+    transform: scale(1.1);
+}
+
+section {
+    padding: 120px 10%;
+    transition: 1s ease;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 60px;
+    color: #023047;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#destinatii {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+#destinatii article {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: 0.5s;
+    transform-style: preserve-3d;
+}
+
+#destinatii article:hover {
+    transform: rotateY(5deg) translateY(-15px);
+}
+
+#destinatii img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+#destinatii article h3 {
+    padding: 20px;
+}
+
+#destinatii article p {
+    padding: 0 20px 20px;
+}
+
+#oferte {
+    background: linear-gradient(120deg, #f1f9ff, #e0f2fe);
+}
+
+.oferta {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: 0.4s;
+    text-align: center;
+}
+
+.oferta:hover {
+    transform: scale(1.05);
+}
+
+.oferta img {
+    width: 100%;
+    max-width: 450px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.oferta strong {
+    color: #e63946;
+    font-size: 20px;
+}
+
+#contact form {
+    max-width: 550px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+#contact input,
+#contact select,
+#contact textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+#contact button {
+    background: linear-gradient(45deg, #023047, #0353a4);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#contact button:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background: #023047;
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+}
+
+
+
+/* DESPRE */
+#despre {
+    text-align: center;
+    background-color: white;
+}
+
+/* CONTACT */
+#contact form {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#contact input,
+#contact select,
+#contact textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#contact button {
+    background: #0077b6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#contact button:hover {
+    background: #023e8a;
+}
+
+
+#acasa {
+    text-align: center;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+
+    nav ul li {
+        display: block;
+        margin: 12px 0;
+    }
+
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 80px 6%;
+    }
+
+    #destinatii img,
+    .oferta img {
+        height: 180px;
+    }
+}
