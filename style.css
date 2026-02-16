@@ -36,6 +36,13 @@ header h1 {
 }
 
 
+.hero h2 {
+    color: white; 
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+
 .hero {
     height: 100vh; 
     width: 100%;
