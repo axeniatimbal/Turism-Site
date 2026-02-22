@@ -1,6 +1,37 @@
+#oferte {
+    background: linear-gradient(120deg, #f1f9ff, #e0f2fe);
+}
 
-#oferte ul {
-    list-style: square;
-    margin-left: 40px;
-    color: #444;
+.oferta {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: 0.4s;
+    text-align: center;
+}
+
+.oferta:hover {
+    transform: scale(1.05);
+}
+
+.oferta img {
+    width: 100%;
+    max-width: 450px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.oferta strong {
+    color: #e63946;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .oferta img {
+        height: 180px;
+    }
 }
