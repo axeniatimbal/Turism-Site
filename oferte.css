@@ -1,6 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-#oferte ul {
-    list-style: square;
-    margin-left: 40px;
-    color: #444;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f8fb;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+header h1 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    letter-spacing: 4px;
+}
+
+nav ul {
+    text-align: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 18px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+nav ul li a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #ffd166;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+main section {
+    margin-top: 80px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 20px;
+    min-height: 80vh;
+}
+
+section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: #000;
+    text-align: center;
+}
+
+footer {
+    background: rgba(0,0,0,0.55);
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 50px;
+}
+
+#oferte {
+    background: linear-gradient(120deg, #f1f9ff, #e0f2fe);
+}
+
+.oferta {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: 0.4s;
+    text-align: center;
+}
+
+.oferta:hover {
+    transform: scale(1.05);
+}
+
+.oferta img {
+    width: 100%;
+    max-width: 450px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.oferta strong {
+    color: #e63946;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .oferta img {
+        height: 180px;
+    }
 }
