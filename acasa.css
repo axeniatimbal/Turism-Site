@@ -19,6 +19,8 @@ body {
 
 header {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     padding: 20px 0;
     background: rgba(0,0,0,0.55);
@@ -76,6 +78,7 @@ nav ul li a:hover::after {
                 url("hero.jpg") center/cover no-repeat;
     background-attachment: fixed;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -90,16 +93,27 @@ nav ul li a:hover::after {
 
 .hero h2 {
     font-size: 60px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero p {
-    font-size: 22px;
+    font-size: 18px;
+    margin-top: 0;
     margin-bottom: 30px;
-    opacity: 0.9;
+    opacity: 0.95;
+    max-width: 500px;
+    line-height: 1.6;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-hero {
+    display: inline-block;
     background: linear-gradient(45deg, #ffd166, #ffb703);
     padding: 15px 40px;
     border-radius: 50px;
@@ -107,6 +121,9 @@ nav ul li a:hover::after {
     font-weight: 600;
     color: black;
     transition: 0.4s;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-hero:hover {
