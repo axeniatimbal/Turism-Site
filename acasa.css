@@ -1,0 +1,69 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background-color: #f9fafb;
+    color: #2c2c2c;
+    line-height: 1.7;
+}
+
+header {
+    background-color: #0f2a44;
+    color: white;
+    padding: 25px 20px;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 6rem;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+main section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #0f2a44;
+    border-left: 5px solid #c9a24d;
+    padding-left: 15px;
+}
+
+#acasa {
+    text-align: center;
+}
+
+#acasa p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+footer {
+    background-color: #0f2a44;
+    color: #ddd;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
