@@ -92,11 +92,37 @@ footer {
 }
 
 #despre {
-    text-align: center;
+    /* main container text should start at left edge */
+    text-align: left;
     background-color: white;
 }
 
 #despre p {
     font-size: 1.1rem;
     color: #555;
+    margin-bottom: 1rem;
+    /* paragraphs flow from left margin */
+    text-align: left;
+}
+
+#despre h3 {
+    margin-top: 1.5rem;
+    color: #333;
+    /* subheadings remain centered like before */
+    text-align: center;
+}
+
+#despre ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 1rem 0;
+}
+
+#despre ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+section {
+    animation: fadeIn 1.5s ease-in;
 }
