@@ -86,7 +86,7 @@ section h2 {
     font-size: 38px;
     margin-bottom: 60px;
     color: #000000;
-    white-space: nowrap; /* păstrează propoziția pe un singur rând */
+    white-space: nowrap;
     overflow-x: auto;
 }
 
@@ -147,12 +147,12 @@ footer {
     }
 }
 
-/* container pentru harta globală */
+
 #map {
     display: block;
     width: 100%;
     height: 500px;
     margin-bottom: 20px;
-    background: #000; /* harta se vede ca pătrat negru */
-    grid-column: 1 / -1; /* ocupă întregul rând */
+    background: #000; 
+    grid-column: 1 / -1; 
 }

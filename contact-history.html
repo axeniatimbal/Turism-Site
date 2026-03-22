@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Istoric Contacte – TravelGo</title>
+
+    <link rel="stylesheet" href="css/contact.css">
+
+    <style>
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .history-table th,
+        .history-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .history-table th {
+            background: #0077b6;
+            color: white;
+        }
+
+        .history-table tr:nth-child(even) {
+            background: #f4f8fb;
+        }
+
+        .history-table tr:hover {
+            background: #e9f3ff;
+        }
+
+        .clear-btn {
+            margin-top: 20px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .clear-btn:hover {
+            background: #ff5252;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="header-top">
+            <h1>TravelGo</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="destinatii.html">Destinații</a></li>
+                <li><a href="oferte.html">Oferte</a></li>
+                <li><a href="despre.html">Despre noi</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact-history.html">Istoric</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section>
+
+            <h2>Istoric Rezervări</h2>
+
+            <table class="history-table">
+
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Gmail</th>
+                        <th>Ora</th>
+                        <th>Mesaj</th>
+                        <th>Locația</th>
+                    </tr>
+                </thead>
+
+                <tbody id="history-body">
+                </tbody>
+
+            </table>
+
+            <div style="text-align:center;">
+                <button class="clear-btn" onclick="clearHistory()">Șterge istoricul</button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 TravelGo – Agenție de Turism</p>
+    </footer>
+
+
+    <script>
+        const adminEmail = "axeniatimbal.com";
+        window.onload = function () {
+            loadHistory();
+        }
+
+
+        function loadHistory() {
+
+            let historyBody = document.getElementById("history-body");
+
+            let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+
+            historyBody.innerHTML = "";
+
+            contacts.forEach(c => {
+
+                let row = `
+<tr>
+<td>${c.name}</td>
+<td>${c.email}</td>
+<td>${c.data}</td>
+<td>${c.mesaj}</td>
+<td>${c.destinatie}</td>
+</tr>
+`;
+
+                historyBody.innerHTML += row;
+
+            });
+
+        }
+
+
+        function clearHistory() {
+
+            if (confirm("Sigur vrei să ștergi istoricul?")) {
+
+                localStorage.removeItem("contacts");
+
+                loadHistory();
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
