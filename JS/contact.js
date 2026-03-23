@@ -51,6 +51,9 @@ function showRecentContacts() {
         return;
     }
 
+
+
+    
     let recentList = "📝 ULTIMELE 5 CONTACTE:\n\n";
     let recent = contacts.slice(-5).reverse();
     

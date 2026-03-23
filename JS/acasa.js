@@ -1,36 +1,33 @@
 
-window.onload = function () {
+console.log("acasa.js încărcat");
 
-    let nume = prompt("Cum te numești?");
-
-    if (nume != null && nume != "") {
-        let h2 = document.querySelector("h2");
-        h2.textContent = "Bine ai venit, " + nume + "!";
+function initWelcome() {
+   
+    const path = window.location.pathname;
+    if (!path.endsWith("index.html") && path !== "/" && path !== "/index.html") {
+        return; 
     }
 
-};
+    let user = JSON.parse(localStorage.getItem("currentUser"));
 
-
-window.addEventListener("scroll", function () {
-
-    let header = document.querySelector("header");
-
-    if (window.scrollY > 50) {
-        header.style.background = "rgba(0,0,0,0.9)";
-    } 
-    else {
-        header.style.background = "rgba(0,0,0,0.55)";
+    if (!user) {
+        user = { name: "Vizitator", email: "" };
+        localStorage.setItem("currentUser", JSON.stringify(user));
     }
 
-});
+    let nameInput = prompt("Cum te numești?");
+    if (nameInput && nameInput.trim() !== "") {
+        user.name = nameInput.trim();
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        console.log("Bine ai venit, " + user.name + "!");
+    } else {
+        console.log("Introdu un nume!");
+    }
 
+    let h2 = document.querySelector(".hero h2");
+    if (h2) {
+        h2.textContent = "Bine ai venit, " + user.name + "!";
+    }
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    let buton = document.querySelector(".btn-hero");
-
-    buton.addEventListener("click", function () {
-
-    });
-
-});
+window.addEventListener("load", initWelcome);
