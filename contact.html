@@ -1,0 +1,294 @@
+<OCTYPE html>
+    <html lang="ro">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Contact – TravelGo</title>
+        <link rel="stylesheet" href="css/contact.css">
+
+    </head>
+
+    <body>
+
+        <header>
+            <div class="header-top">
+                <h1>TravelGo</h1>
+                <div id="user-status"></div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="destinatii.html">Destinații</a></li>
+                    <li><a href="oferte.html">Oferte</a></li>
+                    <li><a href="despre.html">Despre noi</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact-history.html">Istoric</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+            <section id="contact">
+                <h2>Contact / Rezervare</h2>
+
+
+                <div id="profile-box" class="profile-box" style="display: none;">
+                    <h3>Profilul tău</h3>
+                    <p id="profile-info"></p>
+                    <button onclick="logout()" class="logout-btn">Delogare</button>
+                </div>
+
+
+                <div class="tabs" id="tabs-container">
+                    <button class="tab-button active" onclick="showTab('login')">Logare</button>
+                    <button class="tab-button" onclick="showTab('register')">Înregistrare</button>
+                    <button class="tab-button" onclick="showTab('contact-form')">Contact</button>
+                </div>
+
+
+                <div id="login" class="tab-content active">
+                    <h3>Logare</h3>
+                    <form onsubmit="handleLogin(event)">
+                        <label>
+                            Email:
+                            <input type="email" name="login-email" required>
+                        </label>
+                        <br><br>
+
+                        <label>
+                            Parolă:
+                            <input type="password" name="login-password" required>
+                        </label>
+                        <br><br>
+
+                        <button type="submit">Intră în cont</button>
+                    </form>
+                </div>
+
+                <div id="register" class="tab-content">
+                    <h3>Înregistrare</h3>
+                    <form onsubmit="handleRegister(event)">
+                        <label>
+                            Nume Complet:
+                            <input type="text" name="full-name" required>
+                        </label>
+                        <br><br>
+
+                        <label>
+                            Email:
+                            <input type="email" name="register-email" required>
+                        </label>
+                        <br><br>
+
+                        <label>
+                            Parolă:
+                            <input type="password" name="register-password" required>
+                        </label>
+                        <br><br>
+
+                        <label>
+                            Confirmare Parolă:
+                            <input type="password" name="confirm-password" required>
+                        </label>
+                        <br><br>
+
+                        <button type="submit">Creează cont</button>
+                    </form>
+                </div>
+
+                <div id="contact-form" class="tab-content">
+                    <h3>Trimite un mesaj</h3>
+                    <form onsubmit="handleContact(event)">
+                        <label>
+                            Nume:
+                            <input type="text" name="nume" required>
+                        </label>
+                        <br><br>
+
+                        <label>
+                            Email:
+                            <input type="email" name="email" required>
+                        </label>
+                        <br><br>
+
+                        <label>
+                            Destinație:
+                            <select name="destinatie">
+                                <option>Paris</option>
+                                <option>Roma</option>
+                                <option>Dubai</option>
+                            </select>
+                        </label>
+                        <br><br>
+
+                        <label>
+                            Mesaj:
+                            <textarea name="mesaj" required></textarea>
+                        </label>
+                        <br><br>
+
+                        <button type="submit">Trimite</button>
+                    </form>
+                </div>
+
+                <div id="management-section" class="management-section" style="display: none; margin-top: 40px;">
+                    <h3>🔧 Gestionare Contacte</h3>
+                    <div class="management-buttons">
+                        <button onclick="showRecentContacts()" class="mgmt-btn">📝 Vezi Recent</button>
+                        <button onclick="showContactStatistics()" class="mgmt-btn">📊 Statistici</button>
+                        <button onclick="showFavoriteContacts()" class="mgmt-btn">⭐ Favorite</button>
+                        <button onclick="exportContacts()" class="mgmt-btn">💾 Exportă</button>
+                        <button onclick="clearAllContacts()" class="mgmt-btn danger">🗑️ Șterge Toate</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 TravelGo – Agenție de Turism</p>
+        </footer>
+
+        <script>
+            window.onload = function () {
+                checkUserStatus();
+            };
+
+            function checkUserStatus() {
+                let user = JSON.parse(localStorage.getItem("currentUser"));
+                let userStatus = document.getElementById("user-status");
+                let profileBox = document.getElementById("profile-box");
+                let tabsContainer = document.getElementById("tabs-container");
+
+                if (user) {
+                    userStatus.innerHTML = "<span class='logged-in'>✓ Logat: " + user.name + "</span>";
+                    profileBox.style.display = "block";
+                    document.getElementById("profile-info").textContent = "Bun venit, " + user.name + "! Email: " + user.email;
+                    tabsContainer.style.display = "none";
+                } else {
+
+                    userStatus.innerHTML = "<span class='not-logged'>Nu sunteți logat</span>";
+                    profileBox.style.display = "none";
+                    tabsContainer.style.display = "flex";
+                }
+            }
+
+            function showTab(tabName) {
+                let tabs = document.querySelectorAll(".tab-content");
+                tabs.forEach(tab => tab.classList.remove("active"));
+
+                let buttons = document.querySelectorAll(".tab-button");
+                buttons.forEach(btn => btn.classList.remove("active"));
+
+                document.getElementById(tabName).classList.add("active");
+                event.target.classList.add("active");
+            }
+
+            function handleLogin(event) {
+                event.preventDefault();
+                let email = document.querySelector("input[name='login-email']").value;
+                let password = document.querySelector("input[name='login-password']").value;
+
+                fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, password: password })
+                }).then(response => response.json()).then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        localStorage.setItem("currentUser", JSON.stringify({ name: data.name, email: data.email }));
+                        alert("Bine ai revenit, " + data.name + "!");
+                        checkUserStatus();
+                        document.querySelector("form").reset();
+                    }
+                }).catch(err => {
+                    alert("Eroare de rețea.");
+                });
+            }
+
+            function handleRegister(event) {
+                event.preventDefault();
+                let fullName = document.querySelector("input[name='full-name']").value;
+                let email = document.querySelector("input[name='register-email']").value;
+                let password = document.querySelector("input[name='register-password']").value;
+                let confirmPassword = document.querySelector("input[name='confirm-password']").value;
+
+                if (password !== confirmPassword) {
+                    alert("Parolele nu se potrivesc!");
+                    return;
+                }
+
+                fetch('http://localhost:3000/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: fullName, email: email, password: password })
+                }).then(response => response.json()).then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        localStorage.setItem("currentUser", JSON.stringify({ name: fullName, email: email }));
+                        alert("Cont creat cu succes, " + fullName + "! Ești logat automat.");
+                        checkUserStatus();
+                        document.querySelector("form").reset();
+                    }
+                }).catch(err => {
+                    alert("Eroare de rețea.");
+                });
+            }
+
+            function handleContact(event) {
+                event.preventDefault();
+                let nume = document.querySelector("input[name='nume']").value;
+                let email = document.querySelector("input[name='email']").value;
+                let destinatie = document.querySelector("select[name='destinatie']").value;
+                let mesaj = document.querySelector("textarea[name='mesaj']").value;
+
+                if (!validateContactEmail(email)) {
+                    alert("Email-ul nu este valid!");
+                    return;
+                }
+
+                if (!validateMessage(mesaj)) {
+                    alert("Mesajul trebuie să conțină cel puțin 10 caractere!");
+                    return;
+                }
+
+                const user = JSON.parse(localStorage.getItem("currentUser"));
+                fetch('http://localhost:3000/api/bookings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: nume,
+                        email: email,
+                        destination: destinatie,
+                        message: mesaj,
+                        userEmail: user ? user.email : null
+                    })
+                }).then(response => {
+                    if (response.ok) {
+                        alert("Mulțumim, " + nume + "! Rezervarea a fost salvată cu succes.");
+                        document.getElementById("management-section").style.display = "block";
+                        document.querySelector("form").reset();
+                    } else {
+                        alert("Eroare la salvare rezervare.");
+                    }
+                }).catch(err => {
+                    alert("Eroare de rețea.");
+                });
+            }
+
+            function logout() {
+                localStorage.removeItem("currentUser");
+                alert("Ți-ai delogat contul cu succes!");
+                checkUserStatus();
+            }
+        </script>
+
+        <script src="JS/contact.js" defer></script>
+        <script src="JS/acasa.js" defer></script>
+    </body>
+
+    </html>
